@@ -38,7 +38,7 @@ The following snippet shows a typical `NativeKnob` usage scenario, including foc
 
 This uses a full reducer when it could well be `useState`. Leftover code, I assume. Bear with me :)
 
-```
+```jsx
 function reducer(state, action) {
   switch (action.type) {
     case 'set-focus':
