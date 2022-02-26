@@ -25,4 +25,48 @@ editor->registerViewType("DialImage", [this] () -> ViewManager::ViewPair {
     auto shadowView = std::make_unique<ShadowView>(view.get());
     return {std::move(view), std::move(shadowView)};
 });
+editor->registerViewType("ParamTooltip", [this] () -> ViewManager::ViewPair {
+    auto view = std::make_unique<ParamTooltip>(treeState);
+    auto shadowView = std::make_unique<ShadowView>(view.get());
+    return {std::move(view), std::move(shadowView)};
+});
+```
+
+## Example usage
+
+The following snippet shows a typical `NativeKnob` usage scenario, including focus/blur state management.
+
+This uses a full reducer when it could well be `useState`. Leftover code, I assume. Bear with me :)
+
+```
+function reducer(state, action) {
+  switch (action.type) {
+    case 'set-focus':
+      return { ...state, focus: action.payload };
+    case 'reset':
+      return init(action.payload);
+    default:
+      throw new Error();
+  }
+}
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, { focus: null });
+  const setFocussedElement = paramId => {
+    dispatch({ type: 'set-focus', payload: paramId });
+  };
+  // Allows the user to blur element by clicking on the UI's body
+  const onMouseDown = () => {
+    setFocussedElement(null);
+  };
+  return (
+    <View onMouseDown={onMouseDown}>
+      <NativeKnob
+        paramId="lows"
+        label="LOWS"
+        focussedElement={state.focus}
+        setFocussedElement={setFocussedElement}
+      />
+    </View>
+  )
 ```
