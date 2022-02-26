@@ -8,6 +8,8 @@ You'll have to add your own `dial.png` asset.
 
 There is a class called `EditorWithCustomViews`. I don't remember if it's absolutely necessary to do that. I think I needed it to run some code on bundle evaluation. I'm including it just in case.
 
+There's also a class called `ParamTooltip`. This could probably have a better name (I used to use this as a tooltip, but then made it replace the dial's label and show the value when the dial is focussed).
+
 Before you use `NativeKnob` on the js side, you need to make sure your custom views are registered, like so:
 
 ```cpp
