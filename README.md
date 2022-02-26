@@ -10,7 +10,7 @@ There is a class called `EditorWithCustomViews`. I don't remember if it's absolu
 
 Before you use `NativeKnob` on the js side, you need to make sure your custom views are registered, like so:
 
-```
+```cpp
 auto* editor = new EditorWithCustomViews(*this, bundle);
 
 editor->registerViewType("DiscreteDialMarks", [this] () -> ViewManager::ViewPair {
