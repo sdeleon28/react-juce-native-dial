@@ -2,6 +2,8 @@
 
 Dial writen in C++ for react-juce. This implementation avoids any kind of jitter that you may experience while turning a dial because it doesn't send values over the bridge as the user drags.
 
+## Installing
+
 There's no properly packaged build for this, so you'll have to copy files into the appropriate places.
 
 You'll have to add your own `dial.png` asset.
@@ -9,6 +11,8 @@ You'll have to add your own `dial.png` asset.
 There is a class called `EditorWithCustomViews`. I don't remember if it's absolutely necessary to do that. I think I needed it to run some code on bundle evaluation. I'm including it just in case.
 
 There's also a class called `ParamTooltip`. This could probably have a better name (I used to use this as a tooltip, but then made it replace the dial's label and show the value when the dial is focussed).
+
+## Registering Views
 
 Before you use `NativeKnob` on the js side, you need to make sure your custom views are registered, like so:
 
